@@ -77,6 +77,7 @@ def generate_top_charts(main_df, domain_groups, start, end):
             raise ValueError("Misconfigured group")
 
         results["groups"][group_title] = {
+            "slug": group_title.lower().replace(" ", "-"),
             "domains": data.get("domains"),
             "pattern": data.get("pattern"),
             "top_posts": sub_df.sort_values(by="Points", ascending=False)

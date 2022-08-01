@@ -118,10 +118,21 @@
 <div class="column is-one-third-widescreen is-half-desktop">
     <div class="columns has-text-centered">
         <div class="column">
-            <h3 title="{% filter trim %}
-{% if data.get("domains") %} Posts from the following websites: '{{data["domains"]}}'{% endif%}
-{% if data.get("pattern") %}Posts matching the following domain: '{{data["pattern"]}}'{% endif%}
-{% endfilter %}">{{ group_title }} [?]</h3>
+            <h3>{{ group_title }} <a href="#" class="js-group-explainer-trigger explainer-trigger" data-target="js-explainer-div-{{data['slug']}}">[?]</a></h3>
+            <div id="js-explainer-div-{{data['slug']}}" class="explainer-container">
+                {% if data.get("domains") %}
+                    <p>Posts from the following websites:</p>
+                    <ul class="explainer-list">
+                        {% for domain in data["domains"] %}
+                            <li>{{domain}}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if data.get("pattern") %}
+                    <p>Posts matching the following domain: <strong>{{data["pattern"]}}</strong></p>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% for post in data["top_posts"] %}

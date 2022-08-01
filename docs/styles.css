@@ -219,3 +219,16 @@ font-size: 1.1em;
 .dark-theme footer {
   background-color: #1b1821;
 }
+
+.explainer-container{
+    font-size: .8em;
+    display:none;
+    text-align:left;
+}
+.explainer-trigger, .explainer-trigger:visited{
+    color: #900;
+}
+
+.explainer-list{
+    display: grid;grid-template-columns: repeat(2, 1fr); list-style-position: inside;list-style-type: none;
+}

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
+  // Automatic scroll of weeks
   for (const element of document.getElementsByClassName("is-active")) {
     setTimeout(function () {
       element.parentElement.parentElement.scrollTo({
@@ -6,9 +7,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
         behavior: "auto",
       });
     }, 300);
-  }
+  };
+
+  // Explainer
+  (document.querySelectorAll('.js-group-explainer-trigger') || []).forEach(($trigger) => {
+    const div = $trigger.getAttribute("data-target");
+    const $target = document.getElementById(div);
+
+    $trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const display = $target.style.display;
+      if(display !== "block"){
+        $target.style.display = "block";
+      }else{
+        $target.style.display = "none";
+      }
+    });
+  });
+
 });
 
+// Dark mode
 var darkModeToggle = document.getElementById("dark-mode-toggle");
 var isDarkMode = window.localStorage.getItem("isDarkMode") === "true";
 if (isDarkMode) {
@@ -34,3 +53,4 @@ darkModeToggle.addEventListener(
   },
   false
 );
+
